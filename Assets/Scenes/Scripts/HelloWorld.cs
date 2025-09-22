@@ -6,6 +6,7 @@ public class HelloWorld : MonoBehaviour
     void Start()
     {
         Debug.Log("Hello Unity");
+        Debug.Log("New branch commitment")
     }
 
     // Update is called once per frame
