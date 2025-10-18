@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class ShipPawn : MonoBehaviour
 {
+    [Header("Components")]
+    public Health health;
+    public Death death;
+
     [Header("Movement Speeds")]
     public float moveSpeed = 5f;       // units per second
     public float turboSpeed = 10f;     // turbo units per second
@@ -22,6 +26,8 @@ public class ShipPawn : MonoBehaviour
     void Start()
     {
         currentSpeed = moveSpeed;
+        health = GetComponent<Health>();
+        death = GetComponent<Death>();
     }
 
     // Called by controller each frame
