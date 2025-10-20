@@ -67,4 +67,12 @@ public class ShipPawn : MonoBehaviour
     {
         currentSpeed = moveSpeed;
     }
-}
+    public ShooterBullet shooter;
+
+  public void Shoot()
+        {
+            shooter.Shoot();
+        }
+    }
+
+

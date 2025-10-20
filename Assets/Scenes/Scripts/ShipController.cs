@@ -31,6 +31,9 @@ public class ShipController : MonoBehaviour
         else
             pawn.DisableTurbo();
 
+        // ----------------Shoot-------------
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            pawn.Shoot();
         // ---------------- Teleports ----------------
         if (Input.GetKeyDown(KeyCode.UpArrow))
             pawn.TeleportWorld(Vector3.up);
