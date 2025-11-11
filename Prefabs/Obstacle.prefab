@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 5461348566531236596}
   - component: {fileID: 7283499184136275743}
   - component: {fileID: -2610705671932108801}
+  - component: {fileID: -4222873675314411073}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -314,6 +315,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSound: {fileID: -2610705671932108801}
   scoreValue: 50
+  isAsteroid: 1
+  smallerAsteroidPrefab: {fileID: 8555836559330020007, guid: a3b2bf0f979d6cc4fb54cb776f8d9204, type: 3}
+  spawnCount: 2
+  spawnOffset: 0.5
+  spawnForce: 2
 --- !u!114 &5834547666576199441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +501,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4222873675314411073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784798609045104636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7d3c24f7f99834ba8062fda1a4fc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!1 &7963180212243733534
 GameObject:
   m_ObjectHideFlags: 0

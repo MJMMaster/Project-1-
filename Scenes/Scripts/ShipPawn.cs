@@ -13,6 +13,7 @@ public class ShipPawn : MonoBehaviour
 
     [Header("Teleport Settings")]
     public float teleportStep = 2f;           // step size for arrow key teleports
+
    
 
     [Header("Camera Bounds")]
@@ -47,6 +48,7 @@ public class ShipPawn : MonoBehaviour
     {
         transform.position += direction * teleportStep;
     }
+    public SoundManager soundManager; // drag your SoundManager here in the Inspector
 
 
     public void RandomTeleport()
@@ -69,10 +71,29 @@ public class ShipPawn : MonoBehaviour
     }
     public ShooterBullet shooter;
 
-  public void Shoot()
-        {
-            shooter.Shoot();
-        }
+    void LateUpdate()
+    {
+        transform.position = GameManager.Instance.WarpPosition(transform.position);
     }
+    public void Shoot()
+        {
+            shooter.Shoot(); 
+        if (soundManager != null)
+        {
+            soundManager.PlayShootSound();
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager not found on this object!");
+        }
+        ;
+    }  
+
+
+
+   
+}
+    
+
 
 

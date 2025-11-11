@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public float flashDuration;
     public UnityEvent<float> onHealthChanged;
     private CameraShake cameraShake;
-
+    public SoundManager soundManager; // drag your SoundManager here in the Inspector
     private Color originalColor;
     private Death deathComponent;
 
@@ -40,9 +40,29 @@ public class Health : MonoBehaviour
         {
             cameraShake.Shake(0.2f, 0.15f);
         }
-        if ( !IsAlive() )
+        if (soundManager != null)
         {
-            currentHealth = 0;
+            soundManager.PlayDamageSound();
+        }
+        else
+        {
+            Debug.LogWarning("SoundManager not found on this object!");
+        }
+        if (CompareTag("Obstacle") && GameManager.Instance.obstacleDamageClip != null)
+            if (GameManager.Instance != null && GameManager.Instance.obstacleDamageClip != null)
+    {
+        AudioSource.PlayClipAtPoint(
+            GameManager.Instance.obstacleDamageClip,
+            transform.position,
+            GameManager.Instance.soundVolume
+        );
+    }
+        if ( !IsAlive() )
+            currentHealth -= amount;
+
+        if (currentHealth <= 0f)
+        {
+            currentHealth = 0f;
             Die();
         }
     }
@@ -72,14 +92,7 @@ public class Health : MonoBehaviour
     }
     public bool IsAlive()
     {
-        if (currentHealth > 0 )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentHealth > 0f; // keep as is, but see below
     }
     private System.Collections.IEnumerator FlashEffect()
     {

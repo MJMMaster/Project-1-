@@ -16,4 +16,8 @@ public class Projectile : MonoBehaviour
         // Optional: prevent damaging the shooter or same team
         Destroy(gameObject); // Destroy projectile on impact
     }
+    void LateUpdate()
+    {
+        transform.position = GameManager.Instance.WarpPosition(transform.position);
+    }
 }
